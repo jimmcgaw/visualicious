@@ -1,0 +1,22 @@
+{% extends "public/base.html" %}
+
+{% block extra_head %}
+<style>
+#main-content {
+    background: none;
+    box-shadow: none;
+    margin: 0 auto;
+    padding: 0px;
+}
+input.submit {
+    margin: 0 auto;
+    margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="smaller_box">
+<h2 class="centered bigh2"><a href="{% url site_login %}">Log in again?</a></h2>
+</div>
+{% endblock %}

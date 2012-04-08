@@ -1,0 +1,10 @@
+*~
+*.pyc
+*.swp
+build/
+.Python
+bin/
+lib/
+include/
+share/
+settings_local.py

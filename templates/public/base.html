@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--[if lt IE 9]>
+    	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="/media/css/bootstrap.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="/media/css/bootstrap-responsive.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="/media/css/style.css" charset="utf-8"/>
+		<style>
+      body {
+        padding-top: 50px; /* to make the container go all the way to the bottom of the topbar (It should be 60px) */
+      }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="body">
+     <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="{% url my_links %}">Links</a></li>
+							<li><a href="{% url clusters %}">Clusters</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+    {% if messages %}
+      {% for message in messages %}
+      <h4>{{ message }}</h4>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+        <div class="row">
+        <footer class="footer center"></footer>
+        </div>
+    </div>
+    
+   {% block javascript_library %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../media/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+    {% endblock %}
+    {% block javascript %}{% endblock %}
+    <script src="/media/js/bootstrap.js"></script>
+</body>
+
+</html>
+

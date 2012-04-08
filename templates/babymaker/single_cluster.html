@@ -1,0 +1,8 @@
+<h3>Cluster #{{ cluster_number }}</h3>
+<ul>
+{% for bookmark in bookmarks %}
+	<li><a href="{{ bookmark.url }}">{{ bookmark.title }}</a></li>
+{% empty %}
+	<li>This cluster has no links.</li>
+{% endfor %}
+</ul>

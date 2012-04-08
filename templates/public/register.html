@@ -1,0 +1,38 @@
+{% extends "public/base.html" %}
+{% block extra_head %}
+<style>
+#main-content {
+    width: 800px;
+    margin-left: 5.2em;
+}
+.intro {text-align: center;}
+input.submit {
+    margin: 0 auto;
+    margin-left: 1em;
+}
+</style>
+{% endblock %}
+{% block content %}
+<p class="intro registration">It's easy to get started with Cazooz.</p>
+<fieldset id="registration-fieldset">
+    <p class="required">Required</p>
+    <form action="/post_register/" method="post" id="registration-form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+
+               {{ field.label_tag }}
+            {{ field.errors }}
+                     {{ field }}
+            <p class="required">Required</p>
+        </div>
+        {% endfor %}
+        <div class="signup_options">
+          I am a...
+        <input type="submit" class="submit" name="account_type" value="parent" />
+        <input type="submit" class="submit" name="account_type" value="provider" />
+        </div>
+        {% csrf_token %}
+    </form>
+</fieldset>
+{% endblock %}

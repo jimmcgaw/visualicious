@@ -1,0 +1,90 @@
+{% extends "public/base.html" %}
+{% block extra_js %}
+<script type="text/javascript" src="/media/js/slides.jquery.js"></script>
+{% endblock %}
+{% block content %}
+    <div id="slides">
+        <div class="slides_container"><!-- Slides Slider -->
+<a href="#"><img src="/media/images/slide01.jpg" alt="" title=""></a>
+<a href="#"><img src="/media/images/slide04.jpg" alt="" title=""></a>
+<a href="#"><img src="/media/images/slide03.jpg" alt="" title=""></a>
+<a href="#"><img src="/media/images/slide02.jpg" alt="" title=""></a>
+</div>
+        <!-- <a href="#" class="prev"><img src="images/slider-arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+        <a href="#" class="next"><img src="images/slider-arrow-next.png" width="24" height="43" alt="Arrow Next"></a> --> 
+    </div><!-- END Slides Slider -->
+    <div id="intro">
+        <p>Cazooz porta faucibus suspendisse nec ipsum amet eget laoreet massa eros id vitae. Ipsum donec at vitae et turpis. Ac enim non unde taciti posuere.</p>
+        <p><a class="learn-more" href="{% url about %}">Learn More</a></p>
+    </div>
+    <div id="sign-up">
+        <div class="parent-signup sign-up-module">
+            <h2>Are you a <span>parent</span>?</h2>
+            <p>Join Cazooz for free and start registering your kids for camps and private lessons!</p>
+            <a class="join" href="{% url register %}">Join Now!</a>
+        </div>
+        <div class="activity-provider-signup sign-up-module">
+            <h2>Are you an <span>activity provider</span>?</h2>
+            <p>Join Cazooz and build your profile. We take care of all the paperwork and payments!</p>
+            <a class="join" href="{% url register %}">Join Now!</a>
+        </div>
+    </div><!-- end #sign-up -->
+    <div id="module-container">
+    <ul class="modules">
+        <li class="module-left module">
+            <div class="module-inside">
+                <h3>Activities Near You</h3>
+                <ul>
+                    <li><a href="">AYSO Soccer for boys and girls</a></li>
+                    <li><a href="">Private Harp lessons</a></li>
+                    <li><a href="">Santa Barbara Cheerleader's summer camp</a></li>
+                    <li><a href="">Superstar Electric Guitar Camp</a></li>
+                    <li><a href="">Little league baseball for 10 years - 14 years old</a></li>
+                </ul>
+                <p class="more"><a href="">View more</a></p>
+            </div><!-- end #module-inside -->
+        </li>
+        <li class="module-center module">
+            <div class="module-inside">
+                <h3>Recently Added Activities</h3>
+                <ul>
+										{% for activity in recently_added_activities %}
+											<li><a href="{{ activity.get_absolute_url }}">{{ activity.name }}</a></li>
+										{% endfor %}
+                </ul>
+                <p class="more"><a href="">View more</a></p>
+            </div><!-- end #module-inside -->
+        </li>
+        <li class="module-right module-browse module">
+            <div class="module-inside">
+                <h3>Learn More About Cazooz</h3>
+                <p>Id neque turpis. Mollis mauris lacus sed ac dolor. Etiam libero adipisicing. Sit maecenas enim. Libero quisque libero donec.</p>
+                <a href="{% url about %}" class="join tour">Learn More</a>
+            </div><!-- end #module-inside -->
+    </li>
+</ul>
+</div><!-- end #module-container -->
+
+{% endblock %}
+
+{% block extra_script %}
+	<script type="text/javascript">
+			// DOM Ready
+			$(function(){
+				$('#slides').slides({
+					preload: true,
+					preloadImage: '/media/images/loading.gif',
+					play: 5000,
+					pause: 2500,
+					hoverPause: true
+				});
+			});
+
+        $(document).keydown(function(e) {
+            if (e.keyCode == 27) {
+                $("#loginpanel").hide(0);
+            }
+        });
+    </script>
+	
+{% endblock %}

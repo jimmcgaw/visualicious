@@ -1,0 +1,21 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+	<h1>Generate Clusters</h1>
+	<br />
+	<form action="." method="get">
+		Generate <input type="text" name="k" value="{% if k_value %}{{ k_value }}{% else %}3{% endif %}" /> clusters for your links.
+		<div id="submit"><input type="submit" value="Generate"></div>
+		<div id="progress" class="hidden"><img src="/media/img/animated_progress.gif" /></div>
+		
+	</form>
+	
+	{% if cluster_list %}
+		{{ cluster_list|safe }}
+	{% endif %}
+	
+{% endblock %}
+
+{% block javascript %}
+	<script src="/media/js/links.js" type="text/javascript"></script>
+{% endblock %}
