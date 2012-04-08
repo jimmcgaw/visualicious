@@ -14,3 +14,6 @@ def render_kclusters(kcluster, bookmarks, template_name="babymaker/cluster_list.
     
 def render_single_cluster(bookmarks, cluster_number, template_name="babymaker/single_cluster.html"):
     return render_to_string(template_name, locals())
+    
+def render_bookmarks(bookmarks, template_name="babymaker/bookmark_list.html"):
+    return render_to_string(template_name, locals())

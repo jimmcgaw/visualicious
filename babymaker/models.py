@@ -57,7 +57,7 @@ class WordCount(models.Model):
             count_for_word = sum([wc.count for wc in word_counts])
             proportion = float(count_for_word)/float(total_word_count)
             proportion = proportion*1000
-            if proportion > 0.3 and proportion < 0.5:
+            if proportion > 0.05 and proportion < 0.08:
                 common_words.append(word)
         print common_words
         return common_words

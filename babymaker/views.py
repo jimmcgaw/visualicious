@@ -14,7 +14,7 @@ from django.conf import settings
 
 from babymaker.models import Bookmark, WordCount
 from babymaker.forms import BookmarkForm
-from babymaker.blocks import render_kclusters
+from babymaker.blocks import render_kclusters, render_bookmarks
 
 from BeautifulSoup import BeautifulSoup
 
@@ -31,7 +31,7 @@ import clusters
 @login_required
 def links(request, template_name="babymaker/links.html"):
     user = request.user
-    bookmarks = user.bookmark_set.all()
+    #bookmarks = user.bookmark_set.all()
     words = []
     title = u""
     form = BookmarkForm()
@@ -112,3 +112,12 @@ def get_page_title_and_word_counts(url):
         pass
         
     return title, word_counts
+    
+@login_required
+def load_bookmarks(request):
+    user = request.user
+    bookmarks = user.bookmark_set.all()
+    bookmarks_html = render_bookmarks(bookmarks)
+    response_data = {"bookmarks_html": bookmarks_html }
+    response_json = simplejson.dumps(response_data)
+    return HttpResponse(response_json, content_type="application/json")

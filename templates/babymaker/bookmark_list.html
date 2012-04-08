@@ -1,0 +1,7 @@
+{% if bookmarks %}
+<ul>
+{% for bookmark in bookmarks %}
+	<li><a href="{{ bookmark.url }}">{{ bookmark.title|safe }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}

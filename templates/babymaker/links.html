@@ -13,13 +13,9 @@
 		
 	</form>
 	<br /><br />
-	{% if bookmarks %}
-	<ul>
-	{% for bookmark in bookmarks %}
-		<li><a href="{{ bookmark.url }}">{{ bookmark.title|safe }}</a></li>
-	{% endfor %}
-	</ul>
-	{% endif %}
+	<div id="bookmarks">
+		<img src="/media/img/animated_progress.gif" />
+	</div>
 {% endblock %}
 
 {% block javascript %}
