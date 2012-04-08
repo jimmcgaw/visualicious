@@ -8,3 +8,4 @@ lib/
 include/
 share/
 settings_local.py
+db.sql

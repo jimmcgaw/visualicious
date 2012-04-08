@@ -53,7 +53,8 @@ def links(request, template_name="babymaker/links.html"):
                         bookmark.title = title
                         bookmark.save()
                         
-                        url = u""
+                        form = BookmarkForm()
+                        messages.success(request, u"Link was added.")
 
                         for word, count in word_counts.iteritems():
                             try:
